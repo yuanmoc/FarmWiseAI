@@ -1,0 +1,11 @@
+/.cursor/
+/.trae/
+/.idea/
+/app/app.db
+/app/milvus.db
+/frontend/node_modules/
+/frontend/.vscode/
+/frontend/.env
+/app/.env
+/app/data/
+/**/__pycache__/

@@ -1,0 +1,41 @@
+from pydantic_settings import BaseSettings
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+class Settings(BaseSettings):
+    APP_NAME: str = "智慧农业咨询系统"
+    ENVIRONMENT: str = "development"
+    DEBUG: bool = True
+    
+    # 数据库配置
+    DATABASE_URL: str = "sqlite:///app.db"
+    SQL_ECHO: bool = True  # 是否打印SQL语句
+    SQL_LOG_LEVEL: str = "ERROR"  # SQL日志级别：DEBUG, INFO, WARNING, ERROR
+    
+    # Milvus配置
+    MILVUS_HOST: str = "localhost"
+    MILVUS_PORT: int = 19530
+    MILVUS_URI: str = "./milvus.db"
+    MILVUS_COLLECTION: str = "agricultural_knowledge"
+    
+
+    # Ollama配置
+    OLLAMA_BASE_URL: str = "http://localhost:11434/v1"
+    OLLAMA_MODEL: str = "qwen3:8b"  # 或其他您想使用的模型
+    OLLAMA_EMBEDDINGS: str = "nomic-embed-text:latest"
+    
+    # JWT配置
+    SECRET_KEY: str = os.getenv("SECRET_KEY", "your-secret-key-here")
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    
+    # 文件上传配置
+    UPLOAD_DIR: str = "./data/uploads"
+    MAX_UPLOAD_SIZE: int = 10 * 1024 * 1024  # 10MB
+    
+    class Config:
+        case_sensitive = True
+
+settings = Settings() 
