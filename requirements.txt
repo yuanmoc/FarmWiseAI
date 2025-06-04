@@ -9,7 +9,7 @@ aiosqlite
 langchain
 langchain_community
 langgraph
-langchain-ollama
+langchain-openai
 langchain-milvus
 pymilvus
 python-dotenv

@@ -5,25 +5,24 @@ from fastapi import UploadFile
 from sqlalchemy.orm import Session
 from app.models.knowledge import Document, Category
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_ollama import OllamaEmbeddings, ChatOllama
 from langchain_milvus import Milvus
 from app.core.config import settings
 import os
 from datetime import datetime
 
 from app.schemas.knowledge import DocumentUpdate
-
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
 class KnowledgeService:
     def __init__(self):
-        self.embeddings = OllamaEmbeddings(
-            # base_url=settings.OLLAMA_BASE_URL,
-            model=settings.OLLAMA_EMBEDDINGS
+        self.embeddings = OpenAIEmbeddings(
+            base_url=settings.OPENAI_BASE_URL,
+            model=settings.OPENAI_EMBEDDINGS
         )
 
-        self.model = ChatOllama(
-            # base_url=settings.OLLAMA_BASE_URL,
-            model=settings.OLLAMA_MODEL,
+        self.model = ChatOpenAI(
+            base_url=settings.OPENAI_BASE_URL,
+            model=settings.OPENAI_MODEL,
             temperature=0.7
         )
         # 默认使用uri

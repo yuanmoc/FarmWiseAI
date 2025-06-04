@@ -21,10 +21,10 @@ class Settings(BaseSettings):
     MILVUS_COLLECTION: str = "agricultural_knowledge"
     
 
-    # Ollama配置
-    OLLAMA_BASE_URL: str = "http://localhost:11434/v1"
-    OLLAMA_MODEL: str = "qwen3:8b"  # 或其他您想使用的模型
-    OLLAMA_EMBEDDINGS: str = "nomic-embed-text:latest"
+    # Xinference 配置
+    OPENAI_BASE_URL: str = "http://localhost:9997/v1"
+    OPENAI_MODEL: str = "qwen3"  # 或其他您想使用的模型
+    OPENAI_EMBEDDINGS: str = "jina-embeddings-v3"
     
     # JWT配置
     SECRET_KEY: str = os.getenv("SECRET_KEY", "your-secret-key-here")
